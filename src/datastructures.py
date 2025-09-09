@@ -5,6 +5,10 @@ Update this file to implement the following already declared methods:
 - get_member: Should return a member from the self._members list
 """
 
+
+
+
+
 class FamilyStructure:
     def __init__(self, last_name):
         self.last_name = last_name
@@ -25,14 +29,27 @@ class FamilyStructure:
         self._next_id += 1
         return generated_id
 
-    def add_member(self, member):
+    def add_member(self, member: dict): 
         ## You have to implement this method
         ## Append the member to the list of _members
+        member["id"]=self._generate_id()
+        self._members.append(member)
         pass
 
-    def delete_member(self, id):
+    def delete_member(self, id:int):
         ## You have to implement this method
         ## Loop the list and delete the member with the given id
+
+        for member in self._members:
+            print(member)
+            print(id)
+            member_id = int(member["id"])
+            print(member_id)
+            print(member_id==id)
+            if member_id == id:
+                self._members.remove(member)
+                print("Hemos borrado el usuario:")
+            pass
         pass
 
     def get_member(self, id):
